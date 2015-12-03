@@ -1,0 +1,31 @@
+1.工具需求
+	SDK,NDK,ECLIPSE
+2.工程需求
+	新建一个能够运行的A工程
+	在工程中声明带native关键字的C方法的接口函数
+	配置需要倒入的库文件的名字,去掉前面的LIB和后面的so
+	使用static方法
+3.工程配置
+	在工程中新建一个jni文件夹
+	在jni文件夹中间新建mk文件,一个是配置C/C++工程,一个是配置编译器类型工程
+4.生成所需要的C头文件
+	找到XXXXX.class文件,拷贝到根工程下面
+	使用javah 命令生成XXXXXXX.h文件。javah工具是在src文件夹下面使用,
+
+	这个前面有已个小点存在一定不能忘记
+	javah -classpath . cn.com.comit.jni.HelloJni
+          自动生成头文件命令 
+         -v -classpath "${project_loc}/bin/classes" -d "${project_loc}/jni" ${java_type_name}
+、
+	将生成的XXXXXXh文件送到jin文件夹下面,此时文件夹内容为3个文件
+5.改写自己的C方法文件
+
+6.编译系统
+
+PS: 编译jni文件夹可以使用一键编译方法。
+    生成头文件也可以使用一键编译的方法。
+
+7.如何编译一个可以调试的NDK 程序
+	1.关键步骤,第一保证你编译出来的是模拟器或则是真机对应的机器格式。比如ARM9V7 等
+	2.在工程属性中选择native,在C++工程中指定你的头文件路劲
+	3.在编译NDK的时候加入编译调试开关	
